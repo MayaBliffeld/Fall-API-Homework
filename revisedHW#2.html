@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+		</script>
+			<title>Information</title>
+				
+			<script>
+				 $.ajax({
+      type: "GET",
+      url: "https://data.sparkfun.com/output/RM7O7nQ74aHNyMnKmvrn.json",
+      success: (response) => {
+        console.log(response);
+      }
+    });
+
+	$ curl -H "Phant-Private-Key:b5Bvy575Bdh4vg47yRAP" --data "name=12.27&score=14.24" "http://data.sparkfun.com/output/RM7O7nQ74aHNyMnKmvrn";
+	
+
+			</script>
+		</head>
+	</html>
+				

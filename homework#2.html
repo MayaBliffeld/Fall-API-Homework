@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Sacramento">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+		</script>
+			<title>Information</title>
+				
+				<style>
+					h1 {
+						font-size: 65px;
+						font-family: 'Sacramento' ,handwriting;
+						color:#C4C5CF;
+						text-shadow: 2px 2px 4px #000000;
+						padding: 0;
+					}
+					p {
+						font-size: 50px;
+						color:#D4A6FF;
+						text-shadow: 2px 2px 4px #000000;
+					}
+					body {background-color:#CADEE8;} 
+				 		ul.tab {
+    					list-style-type: none;
+    					margin: 0;
+    					padding: 5;
+    					overflow: hidden;
+    					border: 10px solid #000000;
+    					background-color: #f1f1f1;
+					}
+					table, th, td {
+    					border: 2px solid black;
+					}
+				</style>
+	</head>
+		<body>
+			<center><h1> Physical Attributes</h1></center>
+			<p>Here is a table where you can fill out basic informtion and you can post it to the internet!</p>
+
+			<form>
+			Age: <input type="number" name="FirstName" id="age" placeholder="12"><br>
+			Ethnicity: <input type="text" name="LastName" id="Ethnicity" placeholder="Latino"><br>
+			eye color: <input type="text" name="EyeColor"  id="eyeColor" placeholder="blue"><br>
+			hair color: <input type="text" name="HairColor" id="hairColor" placeholder="black"><br>
+			Height: <input type="text" name="Height" id="height" placeholder="4'11"><br>
+			Name: <input type="text" name="Name" id="name" Placeholder="Regina Filange"><br>
+			Weight: <input type="number" name="Weight" id="" placeholder="100"><br>
+			
+				<button type="submit" value="Submit">Submit</button>
+			</form>
+			<script> 
+				let dataUrl = "https://data.sparkfun.com/output/RM7O7nQ74aHNyMnKmvrn.json"
+				let allResults ;
+			
+				$.post(dataUrl, function(result) {
+				allResults = result;
+				console.log(result[0].number);
+				console.log(result);	
+				});
+
+				$.ajax({
+      			type: "GET",
+      			url: "https://data.sparkfun.com/output/RM7O7nQ74aHNyMnKmvrn.json",
+     			success: (response) => {
+        		console.log(response);
+      			}
+    			});
+				$.ajax({
+    			url: 'https://data.sparkfun.com/input/lzamad0aNZCl8VvkAy6v',
+   				headers: {
+        		'lzamad0aNZCl8VvkAy6v':'b5Bvy575Bdh4vg47yRAP'
+    			},
+   				 method: 'POST',
+    			dataType: 'json',
+    			data: { name: "Nano", score: "55"},
+    			success: function(data) {
+      			console.log('success: ' + data);
+    }
+  });
+				$("form").on("submit", function(event) {
+				event.preventDefault();
+				});
+				</script>
+			<table>
+ 	<!-- <tr>
+    <th>Age</th>
+    <th>ethnicity</th>
+    <th>eye Color</th>
+    <th>hair Color</th>
+    <th>height</th>
+    <th>name</th>
+    <th>weight</th>
+  </tr>
+  <tr>
+    <td>dcfgh</td>
+    <td>sdfg</td>
+  </tr>
+</table>
+-->
+
+		</body>
+</html>

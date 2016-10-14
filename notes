@@ -1,0 +1,22 @@
+tpye input 
+click button 
+grab input data
+store in object
+store object to array
+
+
+submit button (by clicking)
+grab input values
+check it against every object using a for loop 
+if username statement 
+if password matches 
+alert success
+else error
+
+create a table and then you have to get your data from sparkfun and it will come back in the form of an array. 
+use a for loop to loop through the array so that it returns an object 
+obj;title
+
+<table> </table>
+
+$("table").append("<tr><td>" + obj.title + "</td></tr>")

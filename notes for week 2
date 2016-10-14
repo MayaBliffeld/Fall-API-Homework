@@ -1,0 +1,23 @@
+undefined happens when you havent added a variable or you don't assign it. 
+var hello; is WRONG
+hello(); is a function
+hello(name1) name 1 is known as a parameter 
+
+ x =1 
+function () {
+	let y = 3
+	x=4
+}
+theses variables would only exist within this function and NOT outside of it...
+
+***vim***
+
+
+//Json ~ { key:[]} Json basically is an object 
+
+//HTTP requests~ One is called GET, The other is called POST
+
+//Get is anything that you type on the website, basically to retrieve information 
+//post is for sending any type of information/data like emails and blogposts
+
+$.get(url*using your url*, function(result) {}) 

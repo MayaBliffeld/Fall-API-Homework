@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+	</script>
+	<title>getting data</title>
+	</head>
+<body>
+	<script>
+	let url = "https://data.sparkfun.com/output/RM7O7nQ74aHNyMnKmvrn.json"
+	let EveryResult;
+
+	$.get(url, function(result) {
+		EveryResult = result;
+		console.log(result[0].number);
+		console.log(result);
+	}); 
+
+	</script>
+</body>
+</html>
