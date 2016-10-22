@@ -23,21 +23,40 @@
 			</br>
 	password: <input type="password" id="password">
 			</br> 
-		<button> Click me to sign up </button>
+		<button id="signup"> Click me to sign up </button>
 
-	 		<script> function placeInfo () {
-	 			var username = $("input#username").val(); alert(username);	
-	 			var password = $("input#password").val(); alert(password);
-	 			$("button").click(function () {
-				if (username == "input.val()") && password == ("input.val()"){
-					alert ("GOODJOB");
-				} else {"nope"};
-			}
+	</br>
+	Username: <input type="text" id="theUsername">
+	</br>
+	password <input type="password" id="thePassword">
+	</br>
+		<button id="signin"> Click to Log in </button>
+		</br>
 
-			}
-	 		}
+	 		<script> 
+	 			var array = [];
+	 			$("button#signup").click(function () {
+					var username = $("input#username").val(); alert(username);	
+	 				var password = $("input#password").val(); alert(password);
+	 				var info = {username: username , password: password  };
+	 				array.push(info);
+	 				 console.log(array);
+				});
+				$("button#signin").click(function () {
+					console.log(array[0]);
+					var theUsername = $("input#theUsername").val(); 
+					var thePassword = $("input#thePassword").val();
+					
+					var info = array[0];
+
+						if (info.username == theUsername && array[0].password == thePassword) {
+						alert("welcome");
+						} else {
+							alert("Sorry, incorrect");
+						}
+				});
 
 
-	 		</script>
+					</script>
 
 	 </body>
