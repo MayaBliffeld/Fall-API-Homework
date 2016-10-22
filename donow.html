@@ -1,0 +1,49 @@
+<html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
+    <style>
+      body {
+        font-family: 'Tangerine', serif;
+        font-size: 48px;
+        }
+    * {
+        font-size: 36px;
+    background-color: #cc99ff;
+       }
+    
+    </style>
+  </head>
+    <body>
+    <h1>WEATHER</h1>
+    City: <input type="text" id="city" placeholder="Oz">
+    </br></br>
+    <img/>
+    <button> click here for the temperature! </button>
+      </br>
+      <span id="temperature"></span>
+      </br></br></br>
+    <script>
+    $("button").click(function () {
+        const city = $("#city").val();
+        const appid = "3f0070a6a5ee31e691caa4a056a8c0e8"
+        const Url = "http://api.openweathermap.org/data/2.5/weather?q=" + city +  "&appid=" + appid + "&units=imperial"
+        $("body").append(city)
+          
+        $.get(Url, function(results) {
+            $("span#temperature").html(Math.round(results.main.temp)) + "Farenheight";
+            console.log(results.main.temp);
+            const icon = results.weather[0].icon
+            const imageIconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+            $("img").attr("src", imageIconUrl)
+            console.log(results)
+            $("body").append(Math.round(results.main.temp));
+;
+      });
+      });
+   
+          
+  </script>
+    </body>
+</html>

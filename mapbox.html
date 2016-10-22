@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+
+        <style>
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+#marker {
+    background-image: url('https://pbs.twimg.com/profile_images/748887989028204544/hLkUGE_V.jpg');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#otherMarker {
+    background-image: url('https://lh3.ggpht.com/A0x3jzuH1qRkE10HcTiT4qQr_6iAqVg-CTsoIqxnoIFyv92V91WI3KqiVlOvLtfoMRg=w300');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+    
+</style>
+    
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWF5YXJvc2UxNDc3IiwiYSI6ImNpdWtnd2g5bTAwMGoydG51aXF3MXdwZXMifQ.bF1uy_tY9VhVpT-PyyGhOA';
+var home = [-73.9064762, 40.9052245];
+
+var thoughtworks = [-73.9849, 40.7447];
+
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
+    center: [-73.9849, 40.7447], // starting position
+    zoom: 12
+
+    });
+   
+var popup = new mapboxgl.Popup({offset:[0, -30]})
+    .setText('Thoughtworks!!');
+
+var el = document.createElement('div');
+    el.id = 'marker';
+
+    new mapboxgl.Marker(el, {offset:[-25, -25]})
+    .setLngLat(thoughtworks)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+
+var popup = new mapboxgl.Popup({offset:[0, -30]})
+    .setText('home');
+
+var el = document.createElement('div');
+    el.id = 'otherMarker';
+
+    new mapboxgl.Marker(el, {offset:[-25, -25]})
+    .setLngLat(home)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+
+</script>
+
+</body>
+</html>

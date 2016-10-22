@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <style>
+      * {
+        font-size: 36px;
+      }
+    </style>
+  </head>
+<body>
+  City: <input id="city" type="text" placeholder="New York"/>
+  <button>Get Temperature</button><br/>
+  <img/><br/>
+  <span id="temperature"></span>
+
+
+  <script>
+    $("button").click(function() {
+      const city = $("#city").val();
+      const appid = "7416182958cba7efa9f9a7f592c8c994";
+      const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + appid + "&units=imperial";
+      
+      $.get(url, function(results) {
+        $("span#temperature").html(Math.round(results.main.temp) + "F");
+        const icon = results.weather[0].icon;
+        const imageIconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+        $("img").attr("src", imageIconUrl);
+        console.log(results);
+      });
+    });
+  </script>
+</body>
+</html>
