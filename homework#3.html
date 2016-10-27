@@ -2,16 +2,27 @@
 	<head>
 	<title>Instagram Page</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="https://unsplash.it/200/300/?random"</script>
 	</head>
 		<body>
 			<h1> This is a fake instagram page, solely for the use of being able to use an API.</h1>
 			<button> Click Here </button>
+			</br> </br>
+			</img>
 				<script>
-					$("button").click(function() {
-					var photo = new UnsplashPhoto();
-					photo.fetch();
-					
-				</script>
+					$("button").click(function () {
+					alert ("It works.");
+					const url = "http://placehold.it/500x500"
+
+					$.get(url, function(results) {
+					const randomPic	= "http://placehold.it/?random"
+
+						$("img").attr("src", randomPic);
+					});
+
+					});
+					</script>
 		</body>
+
+
+
 </html>
