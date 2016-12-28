@@ -1,0 +1,26 @@
+<html>
+	<head>
+	<title>Instagram Page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	</head>
+		<body>
+			<h1> This is a fake instagram page, solely for the use of being able to use an API.</h1>
+				<button> Click Here </button>
+				</br> </br>
+				<img src="http://placehold.it/500x500">
+				<div></div>
+			<script>
+			$("button").click(function () {
+				$("div").append("<img src=\"https://unsplash.it/200/300?random\"/>");
+				for (var i=0;i<10;i++){
+  				var numbers = Math.floor((Math.random() * 100) + 3);
+  				//i = numbers;
+  				const url = "<img src=\"https://unsplash.it/200/300?image=" + i + numbers + "\"/>";
+  				$("body").append(url);
+				}
+				});
+
+
+			</script>
+		</body>
+</html>

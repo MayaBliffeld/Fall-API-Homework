@@ -12,6 +12,7 @@
 					$("button").click(function () {
 					alert ("It works.");
 					const url = "http://placehold.it/500x500"
+					$(”body”).append("<img src=http://placehold.it/500x500/>");
 
 					$.get(url, function(results) {
 					const randomPic	= "http://placehold.it/?random"

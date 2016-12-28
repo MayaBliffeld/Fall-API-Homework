@@ -22,6 +22,7 @@
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+
 }
 #otherMarker {
     background-image: url('https://lh3.ggpht.com/A0x3jzuH1qRkE10HcTiT4qQr_6iAqVg-CTsoIqxnoIFyv92V91WI3KqiVlOvLtfoMRg=w300');
@@ -31,50 +32,82 @@
     border-radius: 50%;
     cursor: pointer;
 }
+#theThirdMarker {
+    background-image: url('https://alumniandfriends.org/content/themes/afl_theme/assets/img/logo.png');
+    background-size:cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
     
 </style>
     
 </head>
-<body>
+    <body>
 
-<div id='map'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoibWF5YXJvc2UxNDc3IiwiYSI6ImNpdWtnd2g5bTAwMGoydG51aXF3MXdwZXMifQ.bF1uy_tY9VhVpT-PyyGhOA';
-var home = [-73.9064762, 40.9052245];
+    <div id='map'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoibWF5YXJvc2UxNDc3IiwiYSI6ImNpdWtnd2g5bTAwMGoydG51aXF3MXdwZXMifQ.bF1uy_tY9VhVpT-PyyGhOA';
+            var home = [-73.9064762, 40.9052245];
 
-var thoughtworks = [-73.9849, 40.7447];
+            var thoughtworks = [-73.9849, 40.7447];
 
-var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
-    center: [-73.9849, 40.7447], // starting position
-    zoom: 12
+            var Escuela = [-73.9873098, 40.7741896];
 
-    });
-   
-var popup = new mapboxgl.Popup({offset:[0, -30]})
-    .setText('Thoughtworks!!');
+            var map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
+                center: [-73.9849, 40.7447], // starting position
+                zoom: 12
 
-var el = document.createElement('div');
-    el.id = 'marker';
+                });
+                    
+                   
+                           
+            var popup = new mapboxgl.Popup({offset:[0, -30]})
+                //.setText('Thoughtworks!!');
 
-    new mapboxgl.Marker(el, {offset:[-25, -25]})
-    .setLngLat(thoughtworks)
-    .setPopup(popup) // sets a popup on this marker
-    .addTo(map);
+            var el = document.createElement('div');
+                el.id = 'marker';
 
-var popup = new mapboxgl.Popup({offset:[0, -30]})
-    .setText('home');
+                new mapboxgl.Marker(el, {offset:[-25, -25]})
+                .setLngLat(thoughtworks)
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
 
-var el = document.createElement('div');
-    el.id = 'otherMarker';
+                el.addEventListener('click', function() {
+                
+                  });
 
-    new mapboxgl.Marker(el, {offset:[-25, -25]})
-    .setLngLat(home)
-    .setPopup(popup) // sets a popup on this marker
-    .addTo(map);
+                //THESE 3 LINES WERE FOR THOUGHTWORKS!!!
 
-</script>
+            var popup = new mapboxgl.Popup({offset:[0, -30]})
+                //.setText('home');
+
+
+            var el = document.createElement('div');
+                el.id = 'otherMarker';
+
+                new mapboxgl.Marker(el, {offset:[-25, -25]})
+                .setLngLat(home)
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
+
+                // THESE 3 LINES WERE FOR SU CASA
+            var popup = new mapboxgl.Popup({offset:[0, -30]})
+                //.setText('GOOD MORNING LAGUARDIA');
+
+            var el = document.createElement('div');
+                el.id = 'theThirdMarker';
+
+                new mapboxgl.Marker(el, {offset:[-25, -25]})
+                .setLngLat(Escuela)
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
+
+            };
+            </script>
 
 </body>
 </html>

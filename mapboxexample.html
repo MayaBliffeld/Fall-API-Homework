@@ -1,0 +1,224 @@
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.26.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:50%; }
+
+        <style>
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+#marker {
+    background-image: url('https://pbs.twimg.com/profile_images/748887989028204544/hLkUGE_V.jpg');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+#otherMarker {
+    background-image: url('https://lh3.ggpht.com/A0x3jzuH1qRkE10HcTiT4qQr_6iAqVg-CTsoIqxnoIFyv92V91WI3KqiVlOvLtfoMRg=w300');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#theThirdMarker {
+    background-image: url('https://alumniandfriends.org/content/themes/afl_theme/assets/img/logo.png');
+    background-size:cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+    
+</style>
+    
+</head>
+    <body>
+        <h1>WEATHER</h1>
+        City: <input type="text" id="city" placeholder="Oz">
+        </br></br>
+        <img/>
+        <button> click here for the temperature! </button>
+        </br>
+        <span id="temperature"></span>
+        </br></br></br>
+        <button id="wind"> Click here for the wind speed </button>
+        </br></br></br>
+        <span input type=\"textbox\" id="speed"></span>
+
+    <div id='map'></div>
+    <script>
+
+        
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF5YXJvc2UxNDc3IiwiYSI6ImNpdWtnd2g5bTAwMGoydG51aXF3MXdwZXMifQ.bF1uy_tY9VhVpT-PyyGhOA';
+
+        var home = [-73.9064762, 40.9052245];
+
+        var thoughtworks = [-73.9849, 40.7447];
+
+        var Escuela = [-73.9873098, 40.7741896];
+
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
+            center: [-73.9849, 40.7447], // starting position
+            zoom: 12
+        });
+
+map.on('load', function () {
+    // Add a GeoJSON source containing place coordinates and information.
+    map.addSource("places", {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "properties": {
+                    "description": "<strong>Your Home</strong><p> you live there and its cool ig.</p>",
+                    "icon": "star"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.9064762, 40.9052245]
+                }
+            }, {
+                "type": "Feature",
+                "properties": {
+                    "description": "<strong>LaGuardia Highschool</strong><p>Your highschool. Its cool ig.</p>",
+                    "icon": "music"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.9873098, 40.7741896]
+                }
+            }, {
+                "type": "Feature",
+                "properties": {
+                    "description": "<strong>Thoughtwork</strong><p> !!!</p>",
+                    "icon": "music"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-73.9849, 40.7447]
+                }
+            }]
+        }
+    });
+
+
+    // Add a layer showing the places.
+    map.addLayer({
+        "id": "places",
+        "type": "symbol",
+        "source": "places",
+        "layout": {
+            "icon-image": "{icon}-15",
+            "icon-allow-overlap": true
+        }
+    });
+});
+
+var popup = new mapboxgl.Popup({offset:[0, -30]})
+                //.setText('Thoughtworks!!');
+
+            var el = document.createElement('div');
+                el.id = 'marker';
+
+                new mapboxgl.Marker(el, {offset:[-25, -25]})
+                .setLngLat(thoughtworks)
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
+
+                el.addEventListener('click', function() {
+                
+                  });
+
+                //THESE 3 LINES WERE FOR THOUGHTWORKS!!!
+
+            var popup = new mapboxgl.Popup({offset:[0, -30]})
+                //.setText('home');
+
+
+            var el = document.createElement('div');
+                el.id = 'otherMarker';
+
+                new mapboxgl.Marker(el, {offset:[-25, -25]})
+                .setLngLat(home)
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
+
+                // THESE 3 LINES WERE FOR SU CASA
+            var popup = new mapboxgl.Popup({offset:[0, -30]})
+                //.setText('GOOD MORNING LAGUARDIA');
+
+            var el = document.createElement('div');
+                el.id = 'theThirdMarker';
+
+                new mapboxgl.Marker(el, {offset:[-25, -25]})
+                .setLngLat(Escuela)
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
+
+
+// When a click event occurs near a place, open a popup at the location of
+// the feature, with description HTML from its properties.
+map.on('click', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['places'] });
+
+    if (!features.length) {
+        return;
+    }
+
+    var feature = features[0];
+
+    // Populate the popup and set its coordinates
+    // based on the feature found.
+    var popup = new mapboxgl.Popup()
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML(feature.properties.description)
+        .addTo(map);
+});
+
+// Use the same approach as above to indicate that the symbols are clickable
+// by changing the cursor style to 'pointer'.
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point, { layers: ['places'] });
+    map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+});
+$("button").click(function () {
+            const city = $("#city").val();
+            const appid = "3f0070a6a5ee31e691caa4a056a8c0e8";
+            const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "city" + "&appid=" + appid + "&units=imperial";
+                
+            $.get(url, function(results) {
+                $("span#temperature").html(Math.round(results.main.temp)) + "Farenheight";
+                console.log(results.main.temp);
+                const icon = results.weather[0].icon;
+                const imageIconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+                $("img").attr("src", imageIconUrl);
+                console.log(results);
+            });
+        });
+            $("button#wind").click(function () {
+            const city = $("#city").val();
+            const appid = "3f0070a6a5ee31e691caa4a056a8c0e8";
+            const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + appid;
+            $.get(url, function(results) {
+                $("span#wind").html(Math.round(results.wind.speed)) + "MPH";
+            });
+            })
+</script>
+
+</body>
+</html>

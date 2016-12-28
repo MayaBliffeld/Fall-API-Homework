@@ -32,22 +32,22 @@
   	<script>
 		$("button").click(function () {
     		const city = $("#city").val();
-    		const appid = "3f0070a6a5ee31e691caa4a056a8c0e8"
-   			const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "city" "&appid=" + appid + "&units=imperial";
+    		const appid = "3f0070a6a5ee31e691caa4a056a8c0e8";
+   			const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "city" + "&appid=" + appid + "&units=imperial";
     			
     		$.get(url, function(results) {
       			$("span#temperature").html(Math.round(results.main.temp)) + "Farenheight";
       			console.log(results.main.temp);
-      			const icon = results.weather[0].icon
+      			const icon = results.weather[0].icon;
       			const imageIconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
-      			$("img").attr("src", imageIconUrl)
+      			$("img").attr("src", imageIconUrl);
       			console.log(results);
 			});
 		});
 			$("button#wind").click(function () {
 			const city = $("#city").val();
-			const appid = "3f0070a6a5ee31e691caa4a056a8c0e8"
-			const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + appid; ;
+			const appid = "3f0070a6a5ee31e691caa4a056a8c0e8";
+			const url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + appid;
 			$.get(url, function(results) {
 				$("span#wind").html(Math.round(results.wind.speed)) + "MPH";
 			});

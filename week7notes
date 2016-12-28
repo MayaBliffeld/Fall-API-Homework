@@ -1,0 +1,16 @@
+basic for loop: for(var i = 0; i<10; i++){
+	console.log(i);
+}
+it would print "0123456789"
+
+in the part where it says (var i = 0) this means its starting the counter or initializing it. 
+
+Then, i<10 is the conditional which tells you how many times you're running the loop.
+ 
+whatever is included inside the loop is basically saying do whatever for x amount of times. so if you put hi there, it will pring "hi" 10 times. What is actually in the loop would be just numbers, so its telling you how many times to do certain things. "for(var i = 0; i<10; i++)" <--- That part.
+
+basic for loop: for(var i = 0; i<10; i++){
+	console.log(hi);
+}
+it would print "hi hi hi hi hi hi hi hi hi hi hi"
+
